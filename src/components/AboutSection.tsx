@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Brain, Database, Code, Layers } from 'lucide-react';
+import profilePhoto from '@/assets/profile-photo.png';
 
 const highlights = [
   { icon: Brain, label: 'Machine Learning' },
@@ -22,28 +23,52 @@ export const AboutSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
           <h2 className="section-heading mb-4">
             About <span className="text-gradient">Me</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent rounded-full mb-10" />
 
-          <div className="grid md:grid-cols-4 gap-4 mb-10">
-            {highlights.map((item, index) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
-                className="card-elevated p-4 flex items-center gap-3"
-              >
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <item.icon className="w-5 h-5 text-primary" />
+          <div className="grid lg:grid-cols-[280px_1fr] gap-10 mb-10">
+            {/* Profile Photo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex justify-center lg:justify-start"
+            >
+              <div className="relative">
+                <div className="w-56 h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border-2 border-primary/30 glow-border">
+                  <img 
+                    src={profilePhoto} 
+                    alt="Galda Jayachandra" 
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
-                <span className="text-sm font-medium text-foreground">{item.label}</span>
-              </motion.div>
-            ))}
+                {/* Decorative elements */}
+                <div className="absolute -bottom-3 -right-3 w-full h-full rounded-2xl border border-primary/20 -z-10" />
+                <div className="absolute -bottom-6 -right-6 w-full h-full rounded-2xl border border-primary/10 -z-20" />
+              </div>
+            </motion.div>
+
+            {/* Highlights Grid */}
+            <div className="grid grid-cols-2 gap-4 content-start">
+              {highlights.map((item, index) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
+                  className="card-elevated p-4 flex items-center gap-3"
+                >
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <item.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="text-sm font-medium text-foreground">{item.label}</span>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           <motion.div
