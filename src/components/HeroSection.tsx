@@ -62,7 +62,7 @@ export const HeroSection = () => {
               </a>
             </Button>
             <Button variant="outline" size="lg" className="gap-2" asChild>
-              <a href="/resume.pdf" download>
+              <a href={`${import.meta.env.BASE_URL}resume.pdf`} download>
                 <Download className="w-4 h-4" />
                 Download Resume
               </a>

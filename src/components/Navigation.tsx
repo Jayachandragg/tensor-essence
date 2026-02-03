@@ -45,7 +45,7 @@ export const Navigation = () => {
               </a>
             ))}
             <Button variant="outline" size="sm" className="gap-2" asChild>
-              <a href="/resume.pdf" download>
+              <a href={`${import.meta.env.BASE_URL}resume.pdf`} download>
                 <Download className="w-4 h-4" />
                 Resume
               </a>
@@ -81,7 +81,7 @@ export const Navigation = () => {
                 </a>
               ))}
               <Button variant="outline" size="sm" className="gap-2 w-fit" asChild>
-                <a href="/resume.pdf" download>
+                <a href={`${import.meta.env.BASE_URL}resume.pdf`} download>
                   <Download className="w-4 h-4" />
                   Resume
                 </a>
